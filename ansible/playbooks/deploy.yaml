@@ -5,19 +5,22 @@
   tasks:
     #Copy tarball of image to host
     - name: Copy Docker image tarball to target hosts
+      become: true
       copy:
         src: "/tmp/image.tar"
         dest: "/tmp/image.tar"
         mode: '0644'
     
     - name: Load Docker image from tarball
+      become: true
       command: docker load -i /tmp/image.tar
       ignore_errors: yes
 
     - name: Run Docker container
+      become: true
       docker_container:
         name: spring-petclinic
-        image: us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:c39fa79f3795abf3fa87bf7df0ed48295acd06db
+        image: us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:latest
         state: started
         restart_policy: always
         ports:
