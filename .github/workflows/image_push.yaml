@@ -5,9 +5,5 @@ on:
 
 jobs:
   trigger_workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Workflow in spring-petclinic-capstone-workflows
-        uses: MarkizCar20/spring-petclinic-capstone-workflows/actions/workflows/merge_request.yaml
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
+    uses: MarkizCar20/spring-petclinic-capstone-workflows/.github/workflows/merge_request.yaml
+    secrets: inherit
