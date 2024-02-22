@@ -1,7 +1,7 @@
 ---
 - name: Deploy Docker image
   hosts: host_instances
-    become: true
+  become: true
     tasks:
       #Copy tarball of image to host
       - name: Copy Docker image tarball to target hosts
