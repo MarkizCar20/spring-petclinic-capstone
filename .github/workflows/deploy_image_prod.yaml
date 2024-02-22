@@ -1,10 +1,13 @@
 name: Deploy latest image to production
+defaults:
+  run:
+    shell: bash
+    working-directory: ./ansible
 on:
   pull_request:
     branches:
       - main
   workflow_dispatch:
-    
     
 jobs:
   deploy:
@@ -39,7 +42,7 @@ jobs:
       
       - name: Deploy with Ansible to production
         run: |
-          ansible-playbook -i ./inventory.ini ./ansible/playbooks/deploy.
+          ansible-playbook -i ./inventory.ini ./ansible/playbooks/deploy.yaml
           
       - name: Remove tarball
         run: rm /tmp/image.tar
