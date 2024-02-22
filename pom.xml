@@ -36,20 +36,22 @@
     <spring-format.version>0.0.40</spring-format.version>
 
   </properties>
-
-  <dependencies>
-
-    <dependency>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>spring-cloud-gcp-dependencies</artifactId>
       <version>4.1.4</version>
       <type>pom</type>
-      <scope>compile</scope>
-    </dependency>
+      <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
-      <version>latest</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
