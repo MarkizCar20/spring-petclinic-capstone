@@ -17,7 +17,7 @@
     - name: Run Docker container
       docker_container:
         name: spring-petclinic
-        image: us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:3c566cd1cf683aa27b7c42cefd80b3a02ce3d53e
+        image: us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:c39fa79f3795abf3fa87bf7df0ed48295acd06db
         state: started
         restart_policy: always
         ports:

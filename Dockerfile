@@ -1,7 +1,3 @@
-FROM openjdk:11-jre-slim
-
-WORKDIR /app
-
-COPY target/*.jar /app/
-
-CMD ["java", "-jar", "/app/*.jar"]
+FROM openjdk:8-jdk-alpine
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
