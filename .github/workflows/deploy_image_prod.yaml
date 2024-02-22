@@ -1,0 +1,40 @@
+name: Deploy latest image to production
+on:
+  pull_request:
+    branches:
+      - main
+    
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Authenticate to Artifact registry
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          cleanup_credentials: false
+      
+      - name: Setup Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Docker auth
+        run: |-
+          gcloud auth configure-docker us-central1-docker.pkg.dev
+
+      - name: Docker pull
+        run: |-
+          docker pull us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic
+      
+      # - name: Deploy with Ansible to production
+      #   run: |
+      #     ansible-playbook -i ./inventory.ini ./ansible/playbooks/deploy.yaml
+        
+
+
+  
