@@ -44,5 +44,5 @@ jobs:
         run: docker build -t us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:$GITHUB_SHA .
       
       - name: Docker push Image
-        run: docker us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:$GITHUB_SHA
+        run: docker push us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:$GITHUB_SHA
 
