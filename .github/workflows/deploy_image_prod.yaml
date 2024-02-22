@@ -42,7 +42,7 @@ jobs:
       
       - name: Deploy with Ansible to production
         run: |
-          ansible-playbook -i ./inventory.ini ./ansible/playbooks/deploy.yaml
+          ansible-playbook -i ./inventory.ini ./playbooks/deploy.yaml
           
       - name: Remove tarball
         run: rm /tmp/image.tar
