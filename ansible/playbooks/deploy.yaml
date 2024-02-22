@@ -1,35 +1,24 @@
-# Ansible Playbook
+---
+- name: Deploy Docker image
+  hosts: host_instances
+    become: yes
+    tasks:
+      #Copy tarball of image to host
+      - name: Copy Docker image tarball to target hosts
+        copy:
+          src: "/tmp/image.tar"
+          dest: "/tmp/image.tar"
+          mode: '0644'
+      
+      - name: Load Docker image from tarball
+        command: docker load -i /tmp/image.tar
+        ignore_errors: yes
 
-- name: Deploy Application
-  hosts: target_hosts
-  become: yes
-  tasks:
-    - name: Ensure Docker is installed
-      become: yes
-      apt:
-        name: docker.io
-        state: present
-
-    - name: Copy Docker Compose file
-      copy:
-        src: /path/to/docker-compose.yml
-        dest: /home/user/docker-compose.yml
-      become: yes
-
-    - name: Pull Docker image
-      docker_image:
-        name: gcr.io/project-id/image-name:tag
-        state: present
-
-    - name: Run Docker container
-      docker_container:
-        name: my-container
-        image: gcr.io/project-id/image-name:tag
-        state: started
-        restart_policy: always
-        ports:
-          - "8080:8080"
-        volumes:
-          - /path/to/volume:/container/path/to/volume
-        env:
-          EXAMPLE_ENV_VAR: "example_value"
+      - name: Run Docker container
+        docker_container:
+          name: spring-petclinic
+          image: us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:3c566cd1cf683aa27b7c42cefd80b3a02ce3d53e
+          state: started
+          restart_policy: always
+          ports:
+            - "8080:8080"

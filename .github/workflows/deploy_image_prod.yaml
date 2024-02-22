@@ -37,9 +37,12 @@ jobs:
         run: |-
           docker save -o /tmp/image.tar us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:3c566cd1cf683aa27b7c42cefd80b3a02ce3d53e
       
-      # - name: Deploy with Ansible to production
-      #   run: |
-      #     ansible-playbook -i ./inventory.ini ./ansible/playbooks/deploy.yaml
+      - name: Deploy with Ansible to production
+        run: |
+          ansible-playbook -i ./inventory.ini ./ansible/playbooks/deploy.
+          
+      - name: Remove tarball
+        run: rm /tmp/image.tar
         
 
 
