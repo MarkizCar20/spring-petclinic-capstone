@@ -5,5 +5,5 @@ on:
 
 jobs:
   trigger_workflow:
-    uses: MarkizCar20/spring-petclinic-capstone-workflows/.github/workflows/merge_request.yaml
+    uses: MarkizCar20/spring-petclinic-capstone-workflows/.github/workflows/merge_request.yaml@main
     secrets: inherit
