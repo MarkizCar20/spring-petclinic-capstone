@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_and_push_docker_image:
+  build_maven:
     runs-on: self-hosted
   
     steps:
@@ -34,6 +34,7 @@ jobs:
 
   push-to-registry:
     runs-on: self-hosted
+    needs: build_maven
 
     steps:
       - name: Checkout code
