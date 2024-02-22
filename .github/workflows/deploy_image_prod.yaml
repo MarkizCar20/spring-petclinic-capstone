@@ -31,7 +31,7 @@ jobs:
 
       - name: Docker pull
         run: |-
-          docker pull us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic
+          docker pull us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:3c566cd1cf683aa27b7c42cefd80b3a02ce3d53e
       
       # - name: Deploy with Ansible to production
       #   run: |
