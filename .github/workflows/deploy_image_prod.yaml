@@ -34,11 +34,11 @@ jobs:
 
       - name: Docker pull
         run: |-
-          docker pull us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:c39fa79f3795abf3fa87bf7df0ed48295acd06db
+          docker pull us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:bd0778f3a24e6ec5e6a7eddb819ed1df73ec72d3
 
       - name: Save Docker image to tar
         run: |-
-          docker save -o /tmp/image.tar us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:c39fa79f3795abf3fa87bf7df0ed48295acd06db
+          docker save -o /tmp/image.tar us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:bd0778f3a24e6ec5e6a7eddb819ed1df73ec72d3
       
       - name: Deploy with Ansible to production
         run: |
