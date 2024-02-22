@@ -27,7 +27,7 @@ jobs:
         run: mvn clean package -DskipTests
       
       - name: Save JAR Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: jar-artifact
           path: ${{ github.workspace }}/target/*.jar
@@ -41,7 +41,7 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Get Artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: jar-artifact
           path: target/
