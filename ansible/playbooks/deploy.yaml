@@ -2,23 +2,23 @@
 - name: Deploy Docker image
   hosts: host_instances
   become: true
-    tasks:
-      #Copy tarball of image to host
-      - name: Copy Docker image tarball to target hosts
-        copy:
-          src: "/tmp/image.tar"
-          dest: "/tmp/image.tar"
-          mode: '0644'
-      
-      - name: Load Docker image from tarball
-        command: docker load -i /tmp/image.tar
-        ignore_errors: yes
+  tasks:
+    #Copy tarball of image to host
+    - name: Copy Docker image tarball to target hosts
+      copy:
+        src: "/tmp/image.tar"
+        dest: "/tmp/image.tar"
+        mode: '0644'
+    
+    - name: Load Docker image from tarball
+      command: docker load -i /tmp/image.tar
+      ignore_errors: yes
 
-      - name: Run Docker container
-        docker_container:
-          name: spring-petclinic
-          image: us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:3c566cd1cf683aa27b7c42cefd80b3a02ce3d53e
-          state: started
-          restart_policy: always
-          ports:
-            - "8080:8080"
+    - name: Run Docker container
+      docker_container:
+        name: spring-petclinic
+        image: us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:3c566cd1cf683aa27b7c42cefd80b3a02ce3d53e
+        state: started
+        restart_policy: always
+        ports:
+          - "8080:8080"
