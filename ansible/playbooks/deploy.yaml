@@ -20,7 +20,7 @@
       become: true
       docker_container:
         name: spring-petclinic
-        image: us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/petclinic:latest
+        image: us-central1-docker.pkg.dev/petclinic-capstone-project/capstone-project-registry/dev-petclinic:latest
         state: started
         restart_policy: always
         ports:
